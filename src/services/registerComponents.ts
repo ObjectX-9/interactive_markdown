@@ -3,6 +3,7 @@ import { InteractiveCounter } from '../components/InteractiveCounter';
 import { InteractiveButton } from '../components/InteractiveButton';
 import { ColorPicker } from '../components/ColorPicker';
 import { TodoList } from '../components/TodoList';
+import InteractiveCard from '../components/InteractiveCard';
 
 // 注册所有交互式组件
 export function registerComponents() {
@@ -22,6 +23,15 @@ export function registerComponents() {
     props: {
       label: '点击我',
       onClick: () => console.log('按钮被点击')
+    }
+  });
+
+  componentRegistry.register('card1', {
+    type: 'InteractiveCard',
+    component: InteractiveCard,
+    props: {
+      title: '卡片标题',
+      content: '卡片内容'
     }
   });
 
