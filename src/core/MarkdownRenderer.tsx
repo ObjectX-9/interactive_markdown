@@ -1,35 +1,26 @@
 import ReactMarkdown from 'react-markdown';
 import rehypeRaw from 'rehype-raw';
-import { InteractiveButton } from './InteractiveButton';
-import { InteractiveCounter } from './InteractiveCounter';
-import { ColorPicker } from './ColorPicker';
-import { TodoList } from './TodoList';
 import { MarkdownComponentProps } from '../types/components';
 import type { Components } from 'react-markdown';
 import type { HTMLAttributes, DetailedHTMLProps } from 'react';
+import { componentRegistry } from '../services/ComponentRegistry';
 
-const componentMap = {
-  InteractiveButton,
-  InteractiveCounter,
-  ColorPicker,
-  TodoList
-} as const;
 
-export const MarkdownRenderer = ({ content, components }: MarkdownComponentProps) => {
+export const MarkdownRenderer = ({ content }: MarkdownComponentProps) => {
   const renderComponent = (id: string) => {
-    const config = components[id];
-    if (!config) {
-      console.warn(`Component with id ${id} not found in config`);
+    const componentConfig = componentRegistry.get(id);
+    if (!componentConfig) {
+      console.warn(`Component with id ${id} not found in registry`);
+      return null;
+    }
+    const componentFunction = componentConfig.component;
+    const props = componentConfig.props;
+    if (!componentFunction) {
+      console.warn(`Component type ${componentConfig.type} not found in componentMap`);
       return null;
     }
 
-    const Component = componentMap[config.type];
-    if (!Component) {
-      console.warn(`Component type ${config.type} not found in componentMap`);
-      return null;
-    }
-
-    return <Component {...config.props} />;
+    return componentFunction(props);
   };
 
   const customComponents: Components = {

@@ -1,8 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+
+
 // 组件配置
 export interface ComponentConfig<Type extends string = string, Props = any> {
   type: Type;
   props: Props;
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-function-type
+  component: Function;
 }
 
 // 组件注册表

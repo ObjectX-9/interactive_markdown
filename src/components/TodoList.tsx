@@ -5,9 +5,6 @@ export interface TodoListProps {
   title: string;
 }
 
-export type TodoListType = 'TodoList';
-export const TODO_LIST_TYPE: TodoListType = 'TodoList';
-
 interface Todo {
   id: number;
   text: string;
@@ -124,8 +121,9 @@ export const TodoList = ({ title }: TodoListProps) => {
 
 // 注册组件
 componentRegistry.register('todo1', {
-  type: TODO_LIST_TYPE,
+  type: 'TodoList',
   props: {
     title: '我的待办'
-  }
+  },
+  component: TodoList
 });

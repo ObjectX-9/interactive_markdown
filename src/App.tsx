@@ -1,4 +1,4 @@
-import { MarkdownRenderer } from './components/MarkdownRenderer'
+import { MarkdownRenderer } from './core/MarkdownRenderer'
 import { componentRegistry } from './services/ComponentRegistry'
 import './App.css'
 
@@ -11,7 +11,7 @@ const markdownContent = `
 
 下面是一个简单的计数按钮：
 
-<div data-component="button1"></div>
+<div data-component="counter1"></div>
 
 ## 2. 计数器
 

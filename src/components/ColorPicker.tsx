@@ -6,8 +6,6 @@ export interface ColorPickerProps {
   label: string;
 }
 
-export type ColorPickerType = 'ColorPicker';
-export const COLOR_PICKER_TYPE: ColorPickerType = 'ColorPicker';
 
 export const ColorPicker = ({ initialColor = '#1890ff', label }: ColorPickerProps) => {
   const [color, setColor] = useState(initialColor);
@@ -73,9 +71,10 @@ export const ColorPicker = ({ initialColor = '#1890ff', label }: ColorPickerProp
 
 // 注册组件
 componentRegistry.register('color1', {
-  type: COLOR_PICKER_TYPE,
+  type: "ColorPicker",
   props: {
     initialColor: '#1890ff',
     label: '选择你喜欢的颜色'
-  }
+  },
+  component: ColorPicker
 });

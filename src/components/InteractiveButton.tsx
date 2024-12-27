@@ -6,8 +6,6 @@ export interface InteractiveButtonProps {
   color: string;
 }
 
-export type InteractiveButtonType = 'InteractiveButton';
-export const INTERACTIVE_BUTTON_TYPE: InteractiveButtonType = 'InteractiveButton';
 
 export const InteractiveButton = ({ text, color }: InteractiveButtonProps) => {
   const [count, setCount] = useState(0);
@@ -31,9 +29,10 @@ export const InteractiveButton = ({ text, color }: InteractiveButtonProps) => {
 
 // 注册组件
 componentRegistry.register('button1', {
-  type: INTERACTIVE_BUTTON_TYPE,
+  type: 'InteractiveButton',
   props: {
     text: '点击我',
     color: '#1890ff'
-  }
+  },
+  component: InteractiveButton
 });
