@@ -1,6 +1,4 @@
 import { useState } from 'react';
-import { componentRegistry } from '../services/ComponentRegistry';
-
 export interface ColorPickerProps {
   initialColor: string;
   label: string;
@@ -68,13 +66,3 @@ export const ColorPicker = ({ initialColor = '#1890ff', label }: ColorPickerProp
     </div>
   );
 };
-
-// 注册组件
-componentRegistry.register('color1', {
-  type: "ColorPicker",
-  props: {
-    initialColor: '#1890ff',
-    label: '选择你喜欢的颜色'
-  },
-  component: ColorPicker
-});

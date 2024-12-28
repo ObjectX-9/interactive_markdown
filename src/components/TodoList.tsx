@@ -1,6 +1,4 @@
 import { useState } from 'react';
-import { componentRegistry } from '../services/ComponentRegistry';
-
 export interface TodoListProps {
   title: string;
 }
@@ -119,11 +117,3 @@ export const TodoList = ({ title }: TodoListProps) => {
   );
 };
 
-// 注册组件
-componentRegistry.register('todo1', {
-  type: 'TodoList',
-  props: {
-    title: '我的待办'
-  },
-  component: TodoList
-});

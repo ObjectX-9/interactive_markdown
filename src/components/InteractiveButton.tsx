@@ -1,6 +1,4 @@
 import { useState } from 'react';
-import { componentRegistry } from '../services/ComponentRegistry';
-
 export interface InteractiveButtonProps {
   text: string;
   color: string;
@@ -26,13 +24,3 @@ export const InteractiveButton = ({ text, color }: InteractiveButtonProps) => {
     </button>
   );
 };
-
-// 注册组件
-componentRegistry.register('button1', {
-  type: 'InteractiveButton',
-  props: {
-    text: '点击我',
-    color: '#1890ff'
-  },
-  component: InteractiveButton
-});

@@ -1,47 +1,27 @@
-import { MarkdownRenderer } from './core/MarkdownRenderer'
-import { componentRegistry } from './services/ComponentRegistry'
+import { MarkdownEditor } from './components/MarkdownEditor'
 import './App.css'
 
-const markdownContent = `
+const initialContent = `
 # 交互式 Markdown 组件示例
 
 这是一个展示如何在 Markdown 中嵌入交互式组件的示例。
 
-## 1. 交互式卡片
+## 使用方法
 
-这是一个功能丰富的交互式卡片组件，支持主题切换、内容编辑和动画效果：
+1. 点击"插入组件"按钮选择要插入的组件
+2. 在编辑器中编写 Markdown 内容
+3. 右侧实时预览效果
 
-<div data-component="card1"></div>
+## 示例组件
 
-## 2. 交互式按钮
+在下面尝试插入一些组件：
 
-下面是一个简单的计数按钮：
-
-<div data-component="counter1"></div>
-
-## 3. 计数器
-
-这是一个可以加减的计数器：
-
-<div data-component="counter1"></div>
-
-## 4. 颜色选择器
-
-点击下面的色块可以选择不同的颜色：
-
-<div data-component="color1"></div>
-
-## 5. 待办事项列表
-
-这是一个简单的待办事项管理器：
-
-<div data-component="todo1"></div>
 `
 
 function App() {
   return (
     <div className="app">
-      <MarkdownRenderer content={markdownContent} components={componentRegistry.getAll()} />
+      <MarkdownEditor initialContent={initialContent} />
     </div>
   )
 }
